@@ -1,6 +1,8 @@
 package com.example.admin.appframe.base;
 
 import android.app.Activity;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 
 /**
@@ -11,11 +13,10 @@ public abstract class BaseActivity<P extends BasePresenter, V extends BaseView> 
     public P mPersenter;
     private V mView;
     String TAG="";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
+        setContentView();
         getTag();
         initPersenter();
         initView();
@@ -39,8 +40,7 @@ public abstract class BaseActivity<P extends BasePresenter, V extends BaseView> 
         mPersenter.deetach();
     }
 
-
-    public abstract int getLayoutId();
+    public abstract void setContentView();
 
     public abstract P initPersenter();
 
